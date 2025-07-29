@@ -1,0 +1,74 @@
+<odoo>
+    <record id="view_tool_request_tree" model="ir.ui.view">
+        <field name="name">tool.request.tree</field>
+        <field name="model">tool.request</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="tool_id"/>
+                <field name="employee_id"/>
+                <field name="date_from"/>
+                <field name="date_to"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_tool_request_form" model="ir.ui.view">
+        <field name="name">tool.request.form</field>
+        <field name="model">tool.request</field>
+        <field name="arch" type="xml">
+            <form string="Tool Request">
+                <header>
+                    <button name="action_approve" type="object" string="Approve" states="draft"/>
+                    <button name="action_reject" type="object" string="Reject" states="draft"/>
+                    <button name="action_mark_returned" type="object" string="Mark as Returned" states="in_use"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,approved,in_use,returned,rejected"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                        <field name="employee_id"/>
+                        <field name="tool_id"/>
+                        <field name="project_id"/>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                        <field name="state" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Kanban View -->
+    <record id="view_tool_request_kanban" model="ir.ui.view">
+        <field name="name">tool.request.kanban</field>
+        <field name="model">tool.request</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_small_column">
+                <field name="state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <strong><field name="name"/></strong><br/>
+                            <span><field name="tool_id"/></span><br/>
+                            <span><field name="employee_id"/></span><br/>
+                            <span><field name="date_from"/> to <field name="date_to"/></span>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_tool_request" model="ir.actions.act_window">
+        <field name="name">Tool Requests</field>
+        <field name="res_model">tool.request</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="context">{'default_state': 'draft'}</field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="tool_menu_requests" name="Requests" parent="tool_management_root" action="action_tool_request" sequence="30"/>
+</odoo>

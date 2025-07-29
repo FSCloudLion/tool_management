@@ -1,0 +1,31 @@
+<odoo>
+    <!-- Tool Manager Group -->
+    <record id="group_tool_manager" model="res.groups">
+        <field name="name">Tool Manager</field>
+        <field name="category_id" ref="base.module_category_human_resources"/>
+    </record>
+
+    <!-- Rule: Employee can see only own requests -->
+    <record id="tool_request_employee_rule" model="ir.rule">
+        <field name="name">Tool Request - Own Only</field>
+        <field name="model_id" ref="model_tool_request"/>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        <field name="domain_force">[('employee_id.user_id', '=', user.id)]</field>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <!-- Rule: Tool Manager can see all requests -->
+    <record id="tool_request_manager_rule" model="ir.rule">
+        <field name="name">Tool Request - All</field>
+        <field name="model_id" ref="model_tool_request"/>
+       <field name="groups" eval="[(4, ref('tool.group_tool_manager'))]"/>
+        <field name="domain_force">[(1, '=', 1)]</field> <!-- Full access -->
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+</odoo>
