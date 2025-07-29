@@ -1,6 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_tool_tool_user,access_tool_tool_user,model_tool_tool,base.group_user,1,0,0,0
-access_tool_tool_manager,access_tool_tool_manager,model_tool_tool,tool_management.group_tool_manager,1,1,1,1
-
+access_tool_tool_manager,access_tool_tool_manager,model_tool_tool,tool.group_tool_manager,1,1,1,1
 access_tool_request_user,access_tool_request_user,model_tool_request,base.group_user,1,1,1,0
-access_tool_request_manager,access_tool_request_manager,model_tool_request,tool_management.group_tool_manager,1,1,1,1
+access_tool_request_manager,access_tool_request_manager,model_tool_request,tool.group_tool_manager,1,1,1,1
