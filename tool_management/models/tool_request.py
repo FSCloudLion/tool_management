@@ -21,13 +21,14 @@ class ToolRequest(models.Model):
         ('in_use', 'In Use'),
         ('returned', 'Returned'),
         ('rejected', 'Rejected')
-    ], string='Status', default='draft', tracking=True)
+    ], string='Status', default='draft')
 
-    @api.model
-    def create(self, vals):
-        if vals.get('name', 'New') == 'New':
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+         if vals.get('name', 'New') == 'New':
             vals['name'] = self.env['ir.sequence'].next_by_code('tool.request') or 'New'
-        return super(ToolRequest, self).create(vals)
+         return super(ToolRequest, self).create(vals_list)
 
     @api.constrains('tool_id', 'date_from', 'date_to', 'state')
     def _check_overlap(self):
