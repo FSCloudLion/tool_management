@@ -20,9 +20,15 @@
         <field name="arch" type="xml">
             <form string="Tool Request">
                 <header>
-                    <button name="action_approve" type="object" string="Approve" states="draft"/>
-                    <button name="action_reject" type="object" string="Reject" states="draft"/>
-                    <button name="action_mark_returned" type="object" string="Mark as Returned" states="in_use"/>
+                   <t t-if="record.state.raw_value == 'draft'">
+                    <button name="action_approve" type="object" string="Approve" class="btn-primary"/>
+                    <button name="action_reject" type="object" string="Reject"/>
+                </t>
+
+                <t t-if="record.state.raw_value == 'in_use'">
+                    <button name="action_mark_returned" type="object" string="Mark as Returned"/>
+                </t>
+
                     <field name="state" widget="statusbar" statusbar_visible="draft,approved,in_use,returned,rejected"/>
                 </header>
                 <sheet>
