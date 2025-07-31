@@ -9,8 +9,9 @@
     'data': [
         'security/tool_security.xml',
         'security/ir.model.access.csv',
+         'views/request_views.xml',
         'views/tool_views.xml',
-        'views/request_views.xml',
+       
     ],
     'installable': True,
     'application': True,
