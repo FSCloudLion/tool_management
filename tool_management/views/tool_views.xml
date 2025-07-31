@@ -2,7 +2,6 @@
     <record id="view_tool_tool_tree" model="ir.ui.view">
         <field name="name">tool.tool.tree</field>
         <field name="model">tool.tool</field>
-        <field name="type">tree</field> <!-- ✅ Add this -->
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
@@ -15,7 +14,6 @@
     <record id="view_tool_tool_form" model="ir.ui.view">
         <field name="name">tool.tool.form</field>
         <field name="model">tool.tool</field>
-        <field name="type">form</field> <!-- ✅ You should add this too -->
         <field name="arch" type="xml">
             <form>
                 <header>
