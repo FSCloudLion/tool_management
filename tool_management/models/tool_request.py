@@ -26,9 +26,9 @@ class ToolRequest(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
-         if vals.get('name', 'New') == 'New':
-            vals['name'] = self.env['ir.sequence'].next_by_code('tool.request') or 'New'
-         return super(ToolRequest, self).create(vals_list)
+            if vals.get('name', 'New') == 'New':
+                vals['name'] = self.env['ir.sequence'].next_by_code('tool.request') or 'New'
+        return super().create(vals_list)
 
     @api.constrains('tool_id', 'date_from', 'date_to', 'state')
     def _check_overlap(self):
