@@ -11,10 +11,7 @@
         'security/ir.model.access.csv',
         'views/menus.xml', 
         'views/request_views.xml',
-        'views/tool_views.xml',
-        
-        
-       
+        'views/tool_views.xml',  
     ],
     'installable': True,
     'application': True,
