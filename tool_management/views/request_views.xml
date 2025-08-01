@@ -79,6 +79,5 @@
         <field name="context">{'default_state': 'draft'}</field>
     </record>
 
-    <!-- Menu -->
-    <menuitem id="tool_menu_requests" name="Requests" parent="tool_management_root" action="action_tool_request" sequence="30"/>
+   
 </odoo>

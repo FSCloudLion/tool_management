@@ -1,0 +1,3 @@
+<odoo>
+    <menuitem id="tool_management_root" name="Tool Management" sequence="10"/>
+</odoo>
