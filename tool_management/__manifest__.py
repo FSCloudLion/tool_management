@@ -5,7 +5,7 @@
     'version': '1.0',
     'category': 'Operations',
     'summary': 'Manage tool requests, allocations, and returns',
-    'depends': ['base', 'hr', 'project'],
+    'depends': ['base', 'hr', 'project','hr_recruitment'],
     'data': [
         'security/tool_security.xml',
         'security/ir.model.access.csv',
