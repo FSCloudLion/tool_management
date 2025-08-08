@@ -20,11 +20,14 @@
         <field name="arch" type="xml">
             <form string="Tool Request">
                 <header>
-                   <button name="action_approve" type="object" string="Approve" class="btn-primary"/>
+                    <button name="action_approve" type="object" string="Approve" class="btn-primary"/>
                     <button name="action_reject" type="object" string="Reject"/>
                     <button name="action_mark_returned" type="object" string="Mark as Returned"/>
-
-
+                    <button name="action_set_in_use"
+                            string="Set In Use"
+                            type="object"
+                            class="btn-primary"
+                          />
                     <field name="state" widget="statusbar" statusbar_visible="draft,approved,in_use,returned,rejected"/>
                 </header>
                 <sheet>

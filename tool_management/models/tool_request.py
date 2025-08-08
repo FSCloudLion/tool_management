@@ -66,3 +66,9 @@ class ToolRequest(models.Model):
             if request.state != 'in_use':
                 raise ValidationError("Only in-use tools can be marked as returned.")
             request.state = 'returned'
+
+    def action_set_in_use(self):
+        for request in self:
+            if request.state != 'approved':
+                raise ValidationError("Only approved requests can be set to in use.")
+            request.state = 'in_use'
